@@ -42,7 +42,8 @@ public class MainActivity extends Activity {
 	public void buttonAdd(View view) {
 		EditText et = (EditText) findViewById(R.id.editText1);
 		double value = Double.parseDouble(et.getText().toString());
-		il.addToTotal(value);
+		// new String() should be a string containing the product category
+		il.addItem(value, new String());
 		TextView tv = (TextView) findViewById(R.id.textView1);
 		tv.setText(Double.toString(il.getTotal()));
 		et.setText(null);

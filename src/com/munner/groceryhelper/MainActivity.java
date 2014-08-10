@@ -1,23 +1,23 @@
 package com.munner.groceryhelper;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	double total = 0.00;
+	ItemList il;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		il = new ItemList();
 	}
 
 	@Override
@@ -39,11 +39,12 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void buttonAdd(Context context) {
+	public void buttonAdd(View view) {
 		EditText et = (EditText) findViewById(R.id.editText1);
 		double value = Double.parseDouble(et.getText().toString());
-		total += value;
+		il.addToTotal(value);
 		TextView tv = (TextView) findViewById(R.id.textView1);
-		tv.setText(Double.toString(total));
+		tv.setText(Double.toString(il.getTotal()));
+		et.setText(null);
 	}
 }

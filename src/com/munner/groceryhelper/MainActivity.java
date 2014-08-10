@@ -6,7 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -41,11 +43,43 @@ public class MainActivity extends Activity {
 	
 	public void buttonAdd(View view) {
 		EditText et = (EditText) findViewById(R.id.editText1);
-		double value = Double.parseDouble(et.getText().toString());
-		// new String() should be a string containing the product category
-		il.addItem(value, new String());
-		TextView tv = (TextView) findViewById(R.id.textView1);
-		tv.setText(Double.toString(il.getTotal()));
-		et.setText(null);
-	}
+		if (et.getText().toString().equals("")) {
+			//do nothing
+		}
+		else {
+			double	 cost = Double.parseDouble(et.getText().toString());
+			// new String() should be a string containing the product category
+			Spinner sp = (Spinner) findViewById(R.id.spinner1);
+			String category = sp.getSelectedItem().toString();
+			
+	        Toast.makeText(getApplicationContext(), "Selected Item :" + category, Toast.LENGTH_SHORT).show();
+			
+			il.addItem(cost, category);
+			TextView tv = (TextView) findViewById(R.id.textView10);
+			tv.setText(Double.toString(il.getTotal()));
+			et.setText(null);
+			
+			TextView other = (TextView) findViewById(R.id.TextView06);
+			other.setText(Double.toString(il.getOther()));
+	
+			TextView produce = (TextView) findViewById(R.id.textView9);
+			produce.setText(Double.toString(il.getProduce()));
+	
+			TextView meat = (TextView) findViewById(R.id.TextView01);
+			meat.setText(Double.toString(il.getMeat()));
+			
+			TextView alcohol = (TextView) findViewById(R.id.TextView02);
+			alcohol.setText(Double.toString(il.getAlcohol()));
+			
+			TextView dairy = (TextView) findViewById(R.id.TextView03);
+			dairy.setText(Double.toString(il.getDairy()));
+			
+			TextView deli = (TextView) findViewById(R.id.TextView04);
+			deli.setText(Double.toString(il.getDeli()));
+			
+			TextView bread = (TextView) findViewById(R.id.TextView05);
+			bread.setText(Double.toString(il.getBread()));		
+		}
+	}	
+	
 }

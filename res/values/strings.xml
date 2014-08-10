@@ -5,5 +5,25 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="add">Add</string>
+    <string name="produce">Produce</string>
+    <string name="meat">Meat</string>
+    <string name="alcohol">Alcohol</string>
+    <string name="dairy">Dairy</string>
+    <string name="deli">Deli</string>
+    <string name="bread">Bread</string>
+    <string name="other">Other</string>
+    <string name="total">Total</string>
+    <string name="zero">0.00</string>
+    <string name="catButton">Cat.</string>
+    <string-array name="categories">
+        <item >other</item>
+        <item >produce</item>
+        <item >meat</item>
+        <item >bread</item>
+        <item >alcohol</item>
+        <item >deli</item>
+        <item >dairy</item>
+    </string-array>
+    <string name="intZero">0</string>
 
 </resources>

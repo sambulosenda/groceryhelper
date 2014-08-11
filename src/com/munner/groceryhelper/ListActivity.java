@@ -72,6 +72,7 @@ public class ListActivity extends Activity{
 	
 	@Override
 	public void onSaveInstanceState(Bundle bundle) {
+		super.onSaveInstanceState(bundle);
 		bundle.putStringArrayList("list", al);
 	}
 	

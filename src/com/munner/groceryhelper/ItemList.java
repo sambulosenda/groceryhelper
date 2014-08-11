@@ -2,7 +2,10 @@ package com.munner.groceryhelper;
 
 import java.util.ArrayList;
 
-public class ItemList{
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ItemList implements Parcelable{
 	
 	ArrayList<Item> al = new ArrayList<Item>();
 	private double total;
@@ -92,6 +95,24 @@ public class ItemList{
 	
 	private double round(double value) {
 		return Math.floor(value * 100) / 100;
+	}
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		dest.writeList(al);
+		dest.writeDouble(total);
+		dest.writeDouble(other);
+		dest.writeDouble(deli);
+		dest.writeDouble(bread);
+		dest.writeDouble(dairy);
+		dest.writeDouble(alcohol);
+		dest.writeDouble(meat);
+		dest.writeDouble(produce);
 	}
 
 }

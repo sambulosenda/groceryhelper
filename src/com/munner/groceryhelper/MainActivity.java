@@ -22,15 +22,12 @@ public class MainActivity extends Activity {
  		il = new ItemList();
 		
 		if (bundle != null) {
-			il.addItem(bundle.getDouble("meat"), "meat");
-			il.addItem(bundle.getDouble("produce"), "produce");
-			il.addItem(bundle.getDouble("alcohol"), "alcohol");
-			il.addItem(bundle.getDouble("dairy"), "dairy");
-			il.addItem(bundle.getDouble("deli"), "deli");
-			il.addItem(bundle.getDouble("bread"), "bread");
-			il.addItem(bundle.getDouble("other"), "other");
-	        Toast.makeText(getApplicationContext(), Double.toString(bundle.getDouble("bread")), Toast.LENGTH_SHORT).show();
-	        updateDisplay();
+			il = bundle.getParcelable("list");
+			updateDisplay();
+		}
+		else {
+			il = new ItemList();
+			
 		}
 	}
 
@@ -56,20 +53,7 @@ public class MainActivity extends Activity {
 	@Override 
 	protected void onSaveInstanceState(Bundle bundle) {
 		super.onSaveInstanceState(bundle);
-		double meat = il.getMeat();
-		double produce = il.getProduce();
-		double deli = il.getDeli();
-		double bread = il.getBread();
-		double other = il.getOther();
-		double alcohol = il.getAlcohol();
-		double dairy = il.getDairy();
-		bundle.putDouble("meat", meat);
-		bundle.putDouble("produce", produce);
-		bundle.putDouble("other", other);
-		bundle.putDouble("deli", deli);
-		bundle.putDouble("bread", bread);
-		bundle.putDouble("alcohol", alcohol);
-		bundle.putDouble("dairy", dairy);
+		bundle.putParcelable("list", il);
 	}
 	
 	public void buttonAdd(View view) {

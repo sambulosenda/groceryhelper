@@ -34,8 +34,9 @@ public final class R {
         public static final int TextView04=0x7f09000e;
         public static final int TextView05=0x7f09000f;
         public static final int TextView06=0x7f090010;
-        public static final int action_settings=0x7f090013;
+        public static final int action_settings=0x7f090014;
         public static final int button1=0x7f090001;
+        public static final int button2=0x7f090013;
         public static final int editText1=0x7f090000;
         public static final int spinner1=0x7f090012;
         public static final int textView1=0x7f090002;
@@ -69,6 +70,7 @@ public final class R {
         public static final int meat=0x7f050005;
         public static final int other=0x7f05000a;
         public static final int produce=0x7f050004;
+        public static final int reset=0x7f05000f;
         public static final int total=0x7f05000b;
         public static final int zero=0x7f05000c;
     }

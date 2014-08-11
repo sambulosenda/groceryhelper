@@ -25,5 +25,6 @@
         <item >dairy</item>
     </string-array>
     <string name="intZero">0</string>
+    <string name="reset">Reset</string>
 
 </resources>

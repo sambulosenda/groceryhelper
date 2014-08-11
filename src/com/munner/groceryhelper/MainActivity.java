@@ -15,11 +15,23 @@ public class MainActivity extends Activity {
 	ItemList il;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle bundle) {
 		
-		super.onCreate(savedInstanceState);
+		super.onCreate(bundle);
 		setContentView(R.layout.activity_main);
-		il = new ItemList();
+ 		il = new ItemList();
+		
+		if (bundle != null) {
+			il.addItem(bundle.getDouble("meat"), "meat");
+			il.addItem(bundle.getDouble("produce"), "produce");
+			il.addItem(bundle.getDouble("alcohol"), "alcohol");
+			il.addItem(bundle.getDouble("dairy"), "dairy");
+			il.addItem(bundle.getDouble("deli"), "deli");
+			il.addItem(bundle.getDouble("bread"), "bread");
+			il.addItem(bundle.getDouble("other"), "other");
+	        Toast.makeText(getApplicationContext(), Double.toString(bundle.getDouble("bread")), Toast.LENGTH_SHORT).show();
+	        updateDisplay();
+		}
 	}
 
 	@Override
@@ -41,6 +53,25 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	@Override 
+	protected void onSaveInstanceState(Bundle bundle) {
+		super.onSaveInstanceState(bundle);
+		double meat = il.getMeat();
+		double produce = il.getProduce();
+		double deli = il.getDeli();
+		double bread = il.getBread();
+		double other = il.getOther();
+		double alcohol = il.getAlcohol();
+		double dairy = il.getDairy();
+		bundle.putDouble("meat", meat);
+		bundle.putDouble("produce", produce);
+		bundle.putDouble("other", other);
+		bundle.putDouble("deli", deli);
+		bundle.putDouble("bread", bread);
+		bundle.putDouble("alcohol", alcohol);
+		bundle.putDouble("dairy", dairy);
+	}
+	
 	public void buttonAdd(View view) {
 		EditText et = (EditText) findViewById(R.id.editText1);
 		if (et.getText().toString().equals("")) {
@@ -55,31 +86,41 @@ public class MainActivity extends Activity {
 	        Toast.makeText(getApplicationContext(), "Selected Item :" + category, Toast.LENGTH_SHORT).show();
 			
 			il.addItem(cost, category);
-			TextView tv = (TextView) findViewById(R.id.textView10);
-			tv.setText(Double.toString(il.getTotal()));
+			updateDisplay();		
+
 			et.setText(null);
-			
-			TextView other = (TextView) findViewById(R.id.TextView06);
-			other.setText(Double.toString(il.getOther()));
-	
-			TextView produce = (TextView) findViewById(R.id.textView9);
-			produce.setText(Double.toString(il.getProduce()));
-	
-			TextView meat = (TextView) findViewById(R.id.TextView01);
-			meat.setText(Double.toString(il.getMeat()));
-			
-			TextView alcohol = (TextView) findViewById(R.id.TextView02);
-			alcohol.setText(Double.toString(il.getAlcohol()));
-			
-			TextView dairy = (TextView) findViewById(R.id.TextView03);
-			dairy.setText(Double.toString(il.getDairy()));
-			
-			TextView deli = (TextView) findViewById(R.id.TextView04);
-			deli.setText(Double.toString(il.getDeli()));
-			
-			TextView bread = (TextView) findViewById(R.id.TextView05);
-			bread.setText(Double.toString(il.getBread()));		
 		}
+	}
+	
+	public void reset(View view) {
+		il = new ItemList();
+		updateDisplay();
+	}
+
+	private void updateDisplay() {
+		TextView tv = (TextView) findViewById(R.id.textView10);
+		tv.setText(Double.toString(il.getTotal()));
+
+		TextView other = (TextView) findViewById(R.id.TextView06);
+		other.setText(Double.toString(il.getOther()));
+
+		TextView produce = (TextView) findViewById(R.id.textView9);
+		produce.setText(Double.toString(il.getProduce()));
+
+		TextView meat = (TextView) findViewById(R.id.TextView01);
+		meat.setText(Double.toString(il.getMeat()));
+		
+		TextView alcohol = (TextView) findViewById(R.id.TextView02);
+		alcohol.setText(Double.toString(il.getAlcohol()));
+		
+		TextView dairy = (TextView) findViewById(R.id.TextView03);
+		dairy.setText(Double.toString(il.getDairy()));
+		
+		TextView deli = (TextView) findViewById(R.id.TextView04);
+		deli.setText(Double.toString(il.getDeli()));
+		
+		TextView bread = (TextView) findViewById(R.id.TextView05);
+		bread.setText(Double.toString(il.getBread()));
 	}	
 	
 }

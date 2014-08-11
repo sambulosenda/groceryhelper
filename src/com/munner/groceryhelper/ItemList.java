@@ -13,8 +13,16 @@ public class ItemList{
 	private double dairy;
 	private double meat;
 	private double other;
+
 	public ItemList() {
 		this.total = 0.0;
+		this.produce = 0.0;
+		this.bread = 0.0;
+		this.alcohol = 0.0;
+		this.deli = 0.0;
+		this.dairy = 0.0;
+		this.meat = 0.0;
+		this.other = 0.0;
 	}
 	public void updateTotal() {
 		// TODO Auto-generated method stub

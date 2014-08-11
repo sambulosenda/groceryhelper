@@ -25,6 +25,7 @@
         <item>dairy</item>
         <item>frozen</item>
         <item>other</item>
+        <item >snacks</item>
     </string-array>
 
     <string name="intZero">0</string>
@@ -34,5 +35,6 @@
     <string name="frozen">Frozen</string>
     <string name="title_activity_list">List</string>
     <string name="makeList">Make a List</string>
+    <string name="snacks">Snacks</string>
 
 </resources>

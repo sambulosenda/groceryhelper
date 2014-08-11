@@ -133,6 +133,10 @@ public class MainActivity extends Activity {
 		
 		TextView frozen = (TextView) findViewById(R.id.TextView07);
 		frozen.setText(Double.toString(il.getCost("frozen")));
+		
+		TextView snacks = (TextView) findViewById(R.id.TextView09);
+		snacks.setText(Double.toString(il.getCost("snacks")));
+		
 	}	
 	
 	public void removeItem(View view) {

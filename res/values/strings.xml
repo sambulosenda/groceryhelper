@@ -17,14 +17,14 @@
     <string name="catButton">Cat.</string>
 
     <string-array name="categories">
-        <item>produce</item><item>meat</item>
-        
-        
+        <item>produce</item>
+        <item>meat</item>
         <item>bread</item>
         <item>alcohol</item>
         <item>deli</item>
         <item>dairy</item>
-        <item >frozen</item><item>other</item>
+        <item>frozen</item>
+        <item>other</item>
     </string-array>
 
     <string name="intZero">0</string>
@@ -32,5 +32,6 @@
     <string name="title_activity_remove">Remove</string>
     <string name="remove">Remove</string>
     <string name="frozen">Frozen</string>
+    <string name="title_activity_list">List</string>
 
 </resources>

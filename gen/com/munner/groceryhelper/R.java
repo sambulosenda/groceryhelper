@@ -56,12 +56,14 @@ public final class R {
         public static final int textView9=0x7f090009;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_remove=0x7f030001;
+        public static final int activity_list=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_remove=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
-        public static final int remove=0x7f080001;
+        public static final int list=0x7f080000;
+        public static final int main=0x7f080001;
+        public static final int remove=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -80,6 +82,7 @@ public final class R {
         public static final int produce=0x7f050004;
         public static final int remove=0x7f050011;
         public static final int reset=0x7f05000f;
+        public static final int title_activity_list=0x7f050013;
         public static final int title_activity_remove=0x7f050010;
         public static final int total=0x7f05000b;
         public static final int zero=0x7f05000c;

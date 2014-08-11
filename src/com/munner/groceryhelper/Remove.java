@@ -24,6 +24,10 @@ public class Remove extends Activity
 		Intent intent = getIntent();
 		
 		sList = intent.getStringArrayExtra("il");
+		if (sList.length == 0) {
+			Toast.makeText(getApplicationContext(), "Nothing to Remove", Toast.LENGTH_SHORT).show();
+			finish();
+		}
 		ListView lv = (ListView) findViewById(R.id.listView1);
 		lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sList));
 		lv.setOnItemClickListener(this);

@@ -112,7 +112,7 @@ public class MainActivity extends Activity {
 		produce.setText(Double.toString(il.getCost("produce")));
 
 		TextView meat = (TextView) findViewById(R.id.TextView01);
-		meat.setText(Double.toString(il.getCost("Meat")));
+		meat.setText(Double.toString(il.getCost("meat")));
 		
 		TextView alcohol = (TextView) findViewById(R.id.TextView02);
 		alcohol.setText(Double.toString(il.getCost("alcohol")));
@@ -125,6 +125,9 @@ public class MainActivity extends Activity {
 		
 		TextView bread = (TextView) findViewById(R.id.TextView05);
 		bread.setText(Double.toString(il.getCost("bread")));
+		
+		TextView frozen = (TextView) findViewById(R.id.TextView07);
+		frozen.setText(Double.toString(il.getCost("frozen")));
 	}	
 	
 	public void removeItem(View view) {

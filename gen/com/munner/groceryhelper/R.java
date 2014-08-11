@@ -28,7 +28,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int ListButton1=0x7f090001;
+        public static final int ListButton1=0x7f090002;
         public static final int ListText1=0x7f090000;
         public static final int TextView01=0x7f09000a;
         public static final int TextView02=0x7f09000c;
@@ -43,7 +43,7 @@ public final class R {
         public static final int button3=0x7f090016;
         public static final int item1=0x7f09001a;
         public static final int linearLayout1=0x7f090015;
-        public static final int listView1=0x7f090002;
+        public static final int listView1=0x7f090001;
         public static final int spinner1=0x7f090018;
         public static final int textView1=0x7f090003;
         public static final int textView10=0x7f090010;

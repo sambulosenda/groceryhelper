@@ -1,8 +1,11 @@
 package com.munner.groceryhelper;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,21 +18,18 @@ import android.widget.ListView;
 
 public class ListActivity extends Activity{
 
+	private static final String PREFERENCES = "preferences";
 	ArrayList<String> al;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
-		if (savedInstanceState != null) {
-			al = savedInstanceState.getStringArrayList("list");
-		}
-		else {
-			al = new ArrayList<String>();
-		}
-//		if (al.size() == 0) {
-//			Toast.makeText(getApplicationContext(), "Nothing to Remove", Toast.LENGTH_SHORT).show();
-//			finish();
-//		}
+
+		al = new ArrayList<String>();
+		Set<String> set = new HashSet<String>();
+		SharedPreferences info = getSharedPreferences(PREFERENCES, 0);
+		al.addAll(info.getStringSet("set", set));
+		
 		ListView lv = (ListView) findViewById(R.id.listView1);
 		lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al));
 		lv.setOnItemClickListener(new OnItemClickListener() {
@@ -70,11 +70,16 @@ public class ListActivity extends Activity{
 		lv.invalidateViews();
 		et.setText(null);
 	}
-	
+		
 	@Override
-	public void onSaveInstanceState(Bundle bundle) {
-		super.onSaveInstanceState(bundle);
-		bundle.putStringArrayList("list", al);
+	public void onStop() {
+		super.onStop();
+		Set<String> set = new HashSet<String>();
+		set.addAll(al);
+		SharedPreferences info = getSharedPreferences(PREFERENCES, 0);
+		SharedPreferences.Editor editor = info.edit();
+		editor.putStringSet("set", set);
+		editor.commit();
 	}
 	
 }

@@ -25,8 +25,7 @@ public class Remove extends Activity
 		
 		sList = intent.getStringArrayExtra("il");
 		ListView lv = (ListView) findViewById(R.id.listView1);
-		lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, 
-				sList));
+		lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sList));
 		lv.setOnItemClickListener(this);
 	}
 
@@ -51,7 +50,6 @@ public class Remove extends Activity
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int index, long arg3) {
-		// TODO Auto-generated method stub
 		// send index back to main
 		Toast.makeText(getApplicationContext(), "something", Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent("remove");
@@ -59,4 +57,5 @@ public class Remove extends Activity
 		sendBroadcast(intent);
 		finish();
 	}
+
 }

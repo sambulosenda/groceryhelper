@@ -29,9 +29,9 @@ public class MainActivity extends Activity {
 			il = bundle.getParcelable("list");
 			updateDisplay();
 		}
+
 		else {
 			il = new ItemList();
-			
 		}
 		
 		IntentFilter filter = new IntentFilter("remove");
@@ -44,7 +44,6 @@ public class MainActivity extends Activity {
 					updateDisplay();
 				}
 			}
-
 		};
 		registerReceiver(receiver, filter);
 	}
@@ -107,25 +106,25 @@ public class MainActivity extends Activity {
 		tv.setText(Double.toString(il.getTotal()));
 
 		TextView other = (TextView) findViewById(R.id.TextView06);
-		other.setText(Double.toString(il.getOther()));
+		other.setText(Double.toString(il.getCost("other")));
 
 		TextView produce = (TextView) findViewById(R.id.textView9);
-		produce.setText(Double.toString(il.getProduce()));
+		produce.setText(Double.toString(il.getCost("produce")));
 
 		TextView meat = (TextView) findViewById(R.id.TextView01);
-		meat.setText(Double.toString(il.getMeat()));
+		meat.setText(Double.toString(il.getCost("Meat")));
 		
 		TextView alcohol = (TextView) findViewById(R.id.TextView02);
-		alcohol.setText(Double.toString(il.getAlcohol()));
+		alcohol.setText(Double.toString(il.getCost("alcohol")));
 		
 		TextView dairy = (TextView) findViewById(R.id.TextView03);
-		dairy.setText(Double.toString(il.getDairy()));
+		dairy.setText(Double.toString(il.getCost("dairy")));
 		
 		TextView deli = (TextView) findViewById(R.id.TextView04);
-		deli.setText(Double.toString(il.getDeli()));
+		deli.setText(Double.toString(il.getCost("deli")));
 		
 		TextView bread = (TextView) findViewById(R.id.TextView05);
-		bread.setText(Double.toString(il.getBread()));
+		bread.setText(Double.toString(il.getCost("bread")));
 	}	
 	
 	public void removeItem(View view) {

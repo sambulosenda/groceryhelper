@@ -68,6 +68,7 @@ public class ListActivity extends Activity{
 		al.add(et.getText().toString());
 		ListView lv = (ListView) findViewById(R.id.listView1);
 		lv.invalidateViews();
+		et.setText(null);
 	}
 	
 	@Override

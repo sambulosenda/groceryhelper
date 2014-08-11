@@ -19,15 +19,6 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/ListButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ListText1"
-        android:layout_toRightOf="@+id/ListText1"
-        android:text="@string/add" 
-        android:onClick="addToList" />
-
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
@@ -35,5 +26,14 @@
         android:layout_alignLeft="@+id/ListText1"
         android:layout_below="@+id/ListText1" >
     </ListView>
+
+    <Button
+        android:id="@+id/ListButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:onClick="addToList"
+        android:text="@string/add" />
 
 </RelativeLayout>

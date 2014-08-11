@@ -66,9 +66,7 @@ public class MainActivity extends Activity {
 			// new String() should be a string containing the product category
 			Spinner sp = (Spinner) findViewById(R.id.spinner1);
 			String category = sp.getSelectedItem().toString();
-			
-	        Toast.makeText(getApplicationContext(), "Selected Item :" + category, Toast.LENGTH_SHORT).show();
-			
+	
 			il.addItem(cost, category);
 			updateDisplay();		
 

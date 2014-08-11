@@ -64,6 +64,11 @@ public class MainActivity extends Activity {
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		if (id == R.id.item1) {
+			Intent intent = new Intent(this, ListActivity.class);
+			startActivity(intent);
+			
+		}
 		return super.onOptionsItemSelected(item);
 	}
 	
@@ -74,7 +79,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void buttonAdd(View view) {
-		EditText et = (EditText) findViewById(R.id.editText1);
+		EditText et = (EditText) findViewById(R.id.ListText1);
 		if (et.getText().toString().equals("")) {
 			//do nothing
 		}
@@ -135,5 +140,5 @@ public class MainActivity extends Activity {
 		intent.putExtra("il", il.getStringList());
 		startActivity(intent);
 	}
-	
+		
 }

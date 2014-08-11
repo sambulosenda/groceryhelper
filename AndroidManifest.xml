@@ -27,7 +27,7 @@
             android:label="@string/title_activity_remove" >
         </activity>
         <activity
-            android:name=".List"
+            android:name=".ListActivity"
             android:label="@string/title_activity_list"
             android:parentActivityName=".MainActivity" >
             <meta-data

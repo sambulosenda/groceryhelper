@@ -33,5 +33,6 @@
     <string name="remove">Remove</string>
     <string name="frozen">Frozen</string>
     <string name="title_activity_list">List</string>
+    <string name="makeList">Make a List</string>
 
 </resources>

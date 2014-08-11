@@ -57,5 +57,6 @@ public class Remove extends Activity
 		Intent intent = new Intent("remove");
 		intent.putExtra("index", index);
 		sendBroadcast(intent);
+		finish();
 	}
 }

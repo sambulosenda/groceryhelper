@@ -1,6 +1,10 @@
 package com.munner.groceryhelper;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +33,20 @@ public class MainActivity extends Activity {
 			il = new ItemList();
 			
 		}
+		
+		IntentFilter filter = new IntentFilter("remove");
+		BroadcastReceiver receiver = new BroadcastReceiver() {
+			public void onReceive(Context context, Intent intent) {
+				if(intent.getAction().equals("remove")) {
+					// Do my stuff
+					int index = intent.getIntExtra("index", 0);
+					il.removeItem(index);
+					updateDisplay();
+				}
+			}
+
+		};
+		registerReceiver(receiver, filter);
 	}
 
 	@Override
@@ -109,5 +127,11 @@ public class MainActivity extends Activity {
 		TextView bread = (TextView) findViewById(R.id.TextView05);
 		bread.setText(Double.toString(il.getBread()));
 	}	
+	
+	public void removeItem(View view) {
+		Intent intent = new Intent(this, Remove.class);
+		intent.putExtra("il", il.getStringList());
+		startActivity(intent);
+	}
 	
 }

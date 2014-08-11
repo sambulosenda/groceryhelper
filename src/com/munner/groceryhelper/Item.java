@@ -12,6 +12,14 @@ public class Item implements Parcelable{
 		this.cost = cost;
 		this.category = category;
 	}
+	
+	public String getCategory() {
+		return category;
+	}
+	
+	public double getCost() {
+		return cost;
+	}
 
 	@Override
 	public int describeContents() {

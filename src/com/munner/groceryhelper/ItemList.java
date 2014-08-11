@@ -31,6 +31,21 @@ public class ItemList implements Parcelable{
 		// TODO Auto-generated method stub
 		total = produce + bread + alcohol + deli + dairy + meat + other;
 	}
+
+	public ArrayList<Item> getarrayList() {
+		return al;
+	}
+	
+	public String[] getStringList() {
+		int i;
+		int j = al.size();
+		String[] sList = new String[j];
+		for (i=0; i < al.size(); i++) {
+			sList[i] = al.get(i).getCost() + " " + al.get(i).getCategory();
+		}
+		return sList;
+	}
+	
 	public double getTotal() {
 		// TODO Auto-generated method stub
 		return round(total);
@@ -62,6 +77,45 @@ public class ItemList implements Parcelable{
 		}
 		
 		updateTotal();
+		
+	}
+	
+	public void removeItem(int index) {
+		String category;
+		double cost;
+		category = al.get(index).getCategory();
+		cost = al.get(index).getCost();
+		al.remove(index);
+		subItem(cost, category);
+		updateTotal();
+	}
+	
+	private void subItem(double cost, String category) {
+		// TODO Auto-generated method stub
+		if (category.equals("produce")) {
+			produce -= cost;
+		}
+		else if (category.equals("bread")) {
+			bread -= cost;
+		}
+		else if (category.equals("alcohol")) {
+			alcohol -= cost;
+		}
+		else if (category.equals("deli")) {
+			deli -= cost;
+		}
+		else if (category.equals("dairy")) {
+			dairy -= cost;
+		}
+		else if (category.equals("meat")) {
+			meat -= cost;
+		}
+		else if (category.equals("other")) {
+			other -= cost;
+		}
+		
+		updateTotal();
+		
 		
 	}
 	public double getOther() {

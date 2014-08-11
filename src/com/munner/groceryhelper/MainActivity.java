@@ -68,7 +68,10 @@ public class MainActivity extends Activity {
 			String category = sp.getSelectedItem().toString();
 	
 			il.addItem(cost, category);
-			updateDisplay();		
+			updateDisplay();
+
+			Toast.makeText(getApplicationContext(), category + " " 
+							+ Double.toString(cost), Toast.LENGTH_SHORT).show();
 
 			et.setText(null);
 		}
@@ -77,6 +80,8 @@ public class MainActivity extends Activity {
 	public void reset(View view) {
 		il = new ItemList();
 		updateDisplay();
+		Toast.makeText(getApplicationContext(), "Reset all Items", Toast.LENGTH_SHORT).show();
+
 	}
 
 	private void updateDisplay() {

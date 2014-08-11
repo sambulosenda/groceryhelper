@@ -65,10 +65,15 @@ public class ListActivity extends Activity{
 	
 	public void addToList(View view) {
 		EditText et = (EditText) findViewById(R.id.ListText1);
-		al.add(et.getText().toString());
-		ListView lv = (ListView) findViewById(R.id.listView1);
-		lv.invalidateViews();
-		et.setText(null);
+		if (et.getText().toString().equals("")) {
+			//do nothing
+		}
+		else { 
+			al.add(et.getText().toString());
+			ListView lv = (ListView) findViewById(R.id.listView1);
+			lv.invalidateViews();
+			et.setText(null);
+		}
 	}
 		
 	@Override

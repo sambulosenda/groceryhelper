@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 		registerReceiver(receiver, filter);
 		
 		EditText et = (EditText) findViewById(R.id.mainText1);
-		et.setImeActionLabel("ADD", KeyEvent.KEYCODE_NUMPAD_ENTER);
+		//not modifying
 		et.setOnEditorActionListener(new OnEditorActionListener() {
 			@Override
 			public boolean onEditorAction(TextView et, int actionId, KeyEvent event) {

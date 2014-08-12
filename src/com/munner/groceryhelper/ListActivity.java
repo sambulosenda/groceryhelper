@@ -20,26 +20,29 @@ import android.widget.ListView;
 public class ListActivity extends Activity{
 
 	private static final String PREFERENCES = "preferences";
+	ArrayAdapter<String> adapter;
 	ArrayList<String> al;
+	ListView lv;;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
 
 		al = new ArrayList<String>();
+
 		Set<String> set = new HashSet<String>();
 		SharedPreferences info = getSharedPreferences(PREFERENCES, 0);
 		al.addAll(info.getStringSet("set", set));
 		
-		ListView lv = (ListView) findViewById(R.id.listView1);
-		lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al));
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al);
+		lv = (ListView) findViewById(R.id.listView1);
+		lv.setAdapter(adapter);
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> a, View v, int index, long id) {
 				al.remove(index);
-				ListView lv = (ListView) findViewById(R.id.listView1);
-				lv.invalidateViews();
-
+				adapter.notifyDataSetChanged();
 			}
 		});
 
@@ -61,14 +64,11 @@ public class ListActivity extends Activity{
 		if (id == R.id.action_settings) {
 			return true;
 		}
-//		if (id == R.id.listreset) {
-//			int i;
-//			ListView lv = (ListView) findViewById(R.id.listView1);
-//			for (i = 0; i < al.size(); i++) {
-//				al.remove(i);
-//				lv.invalidateViews();
-//			}
-//		}
+		else if (id == R.id.resetList) {
+			al.clear();
+			adapter.notifyDataSetChanged();
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 	
@@ -79,12 +79,11 @@ public class ListActivity extends Activity{
 		}
 		else { 
 			al.add(et.getText().toString());
-			ListView lv = (ListView) findViewById(R.id.listView1);
-			lv.invalidateViews();
+			adapter.notifyDataSetChanged();
 			et.setText(null);
 		}
 	}
-		
+			
 	@Override
 	public void onStop() {
 		super.onStop();

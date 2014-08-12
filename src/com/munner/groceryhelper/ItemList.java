@@ -68,5 +68,12 @@ public class ItemList implements Parcelable{
 	private double round(double value) {
 		return Math.floor(value * 100) / 100;
 	}
+
+	public void clear() {
+		int i;
+		for (; 0 < al.size();) {
+			al.remove(0);
+		}
+	}
 	
 }

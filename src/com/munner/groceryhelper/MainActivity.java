@@ -23,7 +23,6 @@ public class MainActivity extends Activity {
 		
 		super.onCreate(bundle);
 		setContentView(R.layout.activity_main);
- 		il = new ItemList();
 		
 		if (bundle != null) {
 			il = bundle.getParcelable("list");
@@ -100,7 +99,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void reset(View view) {
-		il = new ItemList();
+		il.clear();
 		updateDisplay();
 		Toast.makeText(getApplicationContext(), "Reset all Items", Toast.LENGTH_SHORT).show();
 

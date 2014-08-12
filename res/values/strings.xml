@@ -36,5 +36,6 @@
     <string name="title_activity_list">List</string>
     <string name="makeList">Make a List</string>
     <string name="snacks">Snacks</string>
+    <string name="resetlist">Reset List</string>
 
 </resources>

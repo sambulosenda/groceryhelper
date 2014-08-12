@@ -42,9 +42,10 @@ public final class R {
         public static final int action_settings=0x7f09001b;
         public static final int button2=0x7f090017;
         public static final int button3=0x7f090016;
-        public static final int item1=0x7f09001c;
+        public static final int item1=0x7f09001d;
         public static final int linearLayout1=0x7f090015;
         public static final int listView1=0x7f090001;
+        public static final int listreset=0x7f09001c;
         public static final int spinner1=0x7f090018;
         public static final int textView1=0x7f090003;
         public static final int textView10=0x7f090010;
@@ -86,6 +87,7 @@ public final class R {
         public static final int produce=0x7f050004;
         public static final int remove=0x7f050011;
         public static final int reset=0x7f05000f;
+        public static final int resetlist=0x7f050016;
         public static final int snacks=0x7f050015;
         public static final int title_activity_list=0x7f050013;
         public static final int title_activity_remove=0x7f050010;

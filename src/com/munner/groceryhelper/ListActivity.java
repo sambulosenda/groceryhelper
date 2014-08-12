@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -60,6 +61,14 @@ public class ListActivity extends Activity{
 		if (id == R.id.action_settings) {
 			return true;
 		}
+//		if (id == R.id.listreset) {
+//			int i;
+//			ListView lv = (ListView) findViewById(R.id.listView1);
+//			for (i = 0; i < al.size(); i++) {
+//				al.remove(i);
+//				lv.invalidateViews();
+//			}
+//		}
 		return super.onOptionsItemSelected(item);
 	}
 	

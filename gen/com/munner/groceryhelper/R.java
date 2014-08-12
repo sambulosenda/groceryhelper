@@ -28,7 +28,6 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int ListButton1=0x7f090003;
         public static final int ListText1=0x7f090000;
         public static final int TextView01=0x7f09000b;
         public static final int TextView02=0x7f09000d;
@@ -38,19 +37,20 @@ public final class R {
         public static final int TextView06=0x7f090013;
         public static final int TextView07=0x7f090014;
         public static final int TextView08=0x7f090015;
-        public static final int TextView09=0x7f09001b;
-        public static final int action_settings=0x7f09001c;
+        public static final int TextView09=0x7f090019;
+        public static final int action_settings=0x7f09001a;
         public static final int button1=0x7f090002;
-        public static final int button2=0x7f090018;
-        public static final int button3=0x7f090017;
-        public static final int item1=0x7f09001e;
+        public static final int item1=0x7f09001d;
         public static final int linearLayout1=0x7f090016;
         public static final int listView1=0x7f090001;
-        public static final int resetList=0x7f09001d;
-        public static final int spinner1=0x7f090019;
+        public static final int mainText1=0x7f090003;
+        public static final int mainremove=0x7f09001c;
+        public static final int mainreset=0x7f09001e;
+        public static final int resetList=0x7f09001b;
+        public static final int spinner1=0x7f090017;
         public static final int textView1=0x7f090004;
         public static final int textView10=0x7f090011;
-        public static final int textView11=0x7f09001a;
+        public static final int textView11=0x7f090018;
         public static final int textView2=0x7f090005;
         public static final int textView3=0x7f090007;
         public static final int textView4=0x7f090006;

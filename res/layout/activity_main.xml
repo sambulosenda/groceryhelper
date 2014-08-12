@@ -9,15 +9,17 @@
     tools:context="com.munner.groceryhelper.MainActivity" >
 
     <EditText
-        android:id="@+id/ListText1"
+        android:id="@+id/mainText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:inputType="numberDecimal" >
+        android:inputType="numberDecimal" 
+        android:imeOptions="actionSend" >
 
         <requestFocus />
+
     </EditText>
 
     <TextView
@@ -144,43 +146,7 @@
         android:gravity="fill|bottom"
         android:orientation="horizontal"
         android:weightSum="3" >
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:onClick="removeItem"
-            android:text="@string/remove" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/TextView06"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
-            android:onClick="reset"
-            android:text="@string/reset" />
-
-        <Button
-            android:id="@+id/ListButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/button2"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
-            android:onClick="buttonAdd"
-            android:text="@string/add" />
     </LinearLayout>
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ListText1"
-        android:layout_toRightOf="@+id/ListText1"
-        android:entries="@array/categories" />
 
     <TextView
         android:id="@+id/textView9"
@@ -233,5 +199,13 @@
         android:layout_alignLeft="@+id/TextView07"
         android:layout_below="@+id/TextView07"
         android:text="@string/zero" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/mainText1"
+        android:layout_toRightOf="@+id/mainText1"
+        android:entries="@array/categories" />
 
 </RelativeLayout>

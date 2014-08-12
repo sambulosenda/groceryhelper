@@ -7,15 +7,19 @@ import java.util.Set;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class ListActivity extends Activity{
 
@@ -45,6 +49,27 @@ public class ListActivity extends Activity{
 				adapter.notifyDataSetChanged();
 			}
 		});
+		
+		EditText et = (EditText) findViewById(R.id.ListText1);
+		et.setOnEditorActionListener(new OnEditorActionListener() {
+			@Override
+			public boolean onEditorAction(TextView et, int actionId, KeyEvent event) {
+				boolean handled = false;
+				if (actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN){
+					if (et.getText().toString().equals("")) {
+						//do nothing
+					}
+					else { 
+						al.add(et.getText().toString());
+						adapter.notifyDataSetChanged();
+						et.setText(null);
+					}
+					handled = true;
+				}
+				return handled;
+			}
+
+		});
 
 	}
 
@@ -72,18 +97,6 @@ public class ListActivity extends Activity{
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void addToList(View view) {
-		EditText et = (EditText) findViewById(R.id.ListText1);
-		if (et.getText().toString().equals("")) {
-			//do nothing
-		}
-		else { 
-			al.add(et.getText().toString());
-			adapter.notifyDataSetChanged();
-			et.setText(null);
-		}
-	}
-			
 	@Override
 	public void onStop() {
 		super.onStop();

@@ -6,13 +6,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView.OnEditorActionListener;
 
 public class MainActivity extends Activity {
 
@@ -45,6 +48,39 @@ public class MainActivity extends Activity {
 			}
 		};
 		registerReceiver(receiver, filter);
+		
+		EditText et = (EditText) findViewById(R.id.mainText1);
+		et.setImeActionLabel("ADD", KeyEvent.KEYCODE_NUMPAD_ENTER);
+		et.setOnEditorActionListener(new OnEditorActionListener() {
+			@Override
+			public boolean onEditorAction(TextView et, int actionId, KeyEvent event) {
+				boolean handled = false;
+				if (actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN){
+					if (et.getText().toString().equals("")) {
+						//do nothing
+					}
+					else {
+						double	 cost = Double.parseDouble(et.getText().toString());
+						// new String() should be a string containing the product category
+						Spinner sp = (Spinner) findViewById(R.id.spinner1);
+						String category = sp.getSelectedItem().toString();
+						
+						il.addItem(cost, category);
+						updateDisplay();
+
+						Toast.makeText(getApplicationContext(), category + " " 
+										+ Double.toString(cost), Toast.LENGTH_SHORT).show();
+
+						et.setText(null);
+						handled = true;
+					}
+				}
+				return handled;
+			}
+
+		});
+
+		
 	}
 
 	@Override
@@ -63,10 +99,22 @@ public class MainActivity extends Activity {
 		if (id == R.id.action_settings) {
 			return true;
 		}
-		if (id == R.id.item1) {
+		else if (id == R.id.item1) {
 			Intent intent = new Intent(this, ListActivity.class);
 			startActivity(intent);
-			
+			return true;
+		}
+		else if (id == R.id.mainreset){
+			il.clear();
+			updateDisplay();
+			Toast.makeText(getApplicationContext(), "Reset all Items", Toast.LENGTH_SHORT).show();
+			return true;
+		}
+		else if (id == R.id.mainremove) {
+			Intent intent = new Intent(this, Remove.class);
+			intent.putExtra("il", il.getStringList());
+			startActivity(intent);
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -75,34 +123,6 @@ public class MainActivity extends Activity {
 	protected void onSaveInstanceState(Bundle bundle) {
 		super.onSaveInstanceState(bundle);
 		bundle.putParcelable("list", il);
-	}
-	
-	public void buttonAdd(View view) {
-		EditText et = (EditText) findViewById(R.id.ListText1);
-		if (et.getText().toString().equals("")) {
-			//do nothing
-		}
-		else {
-			double	 cost = Double.parseDouble(et.getText().toString());
-			// new String() should be a string containing the product category
-			Spinner sp = (Spinner) findViewById(R.id.spinner1);
-			String category = sp.getSelectedItem().toString();
-	
-			il.addItem(cost, category);
-			updateDisplay();
-
-			Toast.makeText(getApplicationContext(), category + " " 
-							+ Double.toString(cost), Toast.LENGTH_SHORT).show();
-
-			et.setText(null);
-		}
-	}
-	
-	public void reset(View view) {
-		il.clear();
-		updateDisplay();
-		Toast.makeText(getApplicationContext(), "Reset all Items", Toast.LENGTH_SHORT).show();
-
 	}
 
 	private void updateDisplay() {
@@ -138,10 +158,4 @@ public class MainActivity extends Activity {
 		
 	}	
 	
-	public void removeItem(View view) {
-		Intent intent = new Intent(this, Remove.class);
-		intent.putExtra("il", il.getStringList());
-		startActivity(intent);
-	}
-		
 }

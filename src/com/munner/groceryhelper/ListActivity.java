@@ -39,16 +39,16 @@ public class ListActivity extends Activity{
 		SharedPreferences info = getSharedPreferences(PREFERENCES, 0);
 		al.addAll(info.getStringSet("set", set));
 		
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al);
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, al);
 		lv = (ListView) findViewById(R.id.listView1);
 		lv.setAdapter(adapter);
-		lv.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> a, View v, int index, long id) {
-				al.remove(index);
-				adapter.notifyDataSetChanged();
-			}
-		});
+//		lv.setOnItemClickListener(new OnItemClickListener() {
+//			@Override
+//			public void onItemClick(AdapterView<?> a, View v, int index, long id) {
+//				al.remove(index);
+//				adapter.notifyDataSetChanged();
+//			}
+//		});
 		
 		EditText et = (EditText) findViewById(R.id.ListText1);
 		et.setOnEditorActionListener(new OnEditorActionListener() {
@@ -92,6 +92,12 @@ public class ListActivity extends Activity{
 		else if (id == R.id.resetList) {
 			al.clear();
 			adapter.notifyDataSetChanged();
+		}
+		else if (id == R.id.listCheck) {
+			int index = lv.getCheckedItemPosition();
+			al.remove(index);
+			adapter.notifyDataSetChanged();
+			lv.clearChoices();
 		}
 		
 		return super.onOptionsItemSelected(item);

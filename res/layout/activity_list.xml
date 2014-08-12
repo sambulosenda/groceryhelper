@@ -26,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/button1"
         android:layout_alignLeft="@+id/ListText1"
-        android:layout_below="@+id/ListText1" >
-
+        android:layout_below="@+id/ListText1" 
+        android:choiceMode="singleChoice">
     </ListView>
 
 </RelativeLayout>

@@ -12,11 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class Remove extends Activity 
-	implements OnItemClickListener {
+public class Remove extends Activity {
 
 	String[] sList;
-	
+	ArrayAdapter<String> adapter;
+	ListView lv;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,9 +28,9 @@ public class Remove extends Activity
 			Toast.makeText(getApplicationContext(), "Nothing to Remove", Toast.LENGTH_SHORT).show();
 			finish();
 		}
-		ListView lv = (ListView) findViewById(R.id.listView1);
-		lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sList));
-		lv.setOnItemClickListener(this);
+		lv = (ListView) findViewById(R.id.listView1);
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, sList);
+		lv.setAdapter(adapter);
 	}
 
 	@Override
@@ -49,17 +49,20 @@ public class Remove extends Activity
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		else if (id == R.id.removelist) {
+			int index = lv.getCheckedItemPosition();
+			if (index == -1) {
+				Toast.makeText(getApplicationContext(), "Nothing Selected", Toast.LENGTH_SHORT).show();
+				return true;
+			}
+			Toast.makeText(getApplicationContext(), "Item removed", Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent("remove");
+			intent.putExtra("index", index);
+			sendBroadcast(intent);
+			finish();
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int index, long arg3) {
-		// send index back to main
-		Toast.makeText(getApplicationContext(), "something", Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent("remove");
-		intent.putExtra("index", index);
-		sendBroadcast(intent);
-		finish();
-	}
 
 }

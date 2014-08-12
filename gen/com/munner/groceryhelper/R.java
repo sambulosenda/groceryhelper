@@ -47,6 +47,7 @@ public final class R {
         public static final int mainText1=0x7f090003;
         public static final int mainremove=0x7f09001d;
         public static final int mainreset=0x7f09001f;
+        public static final int removelist=0x7f090020;
         public static final int resetList=0x7f09001b;
         public static final int spinner1=0x7f090017;
         public static final int textView1=0x7f090004;

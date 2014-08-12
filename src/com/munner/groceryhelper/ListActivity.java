@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
 
 public class ListActivity extends Activity{
 
@@ -95,6 +96,10 @@ public class ListActivity extends Activity{
 		}
 		else if (id == R.id.listCheck) {
 			int index = lv.getCheckedItemPosition();
+			if (index == -1) {
+				Toast.makeText(getApplicationContext(), "Nothing Selected", Toast.LENGTH_SHORT).show();
+				return true;
+			}
 			al.remove(index);
 			adapter.notifyDataSetChanged();
 			lv.clearChoices();

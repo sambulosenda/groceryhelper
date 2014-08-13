@@ -87,22 +87,28 @@ public class ListActivity extends Activity{
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		
+		switch (id) {
+		
+		case R.id.action_settings:
 			return true;
-		}
-		else if (id == R.id.resetList) {
+			
+		case R.id.resetList:
 			al.clear();
 			adapter.notifyDataSetChanged();
-		}
-		else if (id == R.id.listCheck) {
+			return true;
+
+		case R.id.listCheck:
 			int index = lv.getCheckedItemPosition();
 			if (index == -1) {
 				Toast.makeText(getApplicationContext(), "Nothing Selected", Toast.LENGTH_SHORT).show();
+				al.remove(index);
+				adapter.notifyDataSetChanged();
+				lv.clearChoices();
 				return true;
 			}
-			al.remove(index);
-			adapter.notifyDataSetChanged();
-			lv.clearChoices();
+
+		default: break;
 		}
 		
 		return super.onOptionsItemSelected(item);

@@ -70,7 +70,6 @@ public class ItemList implements Parcelable{
 	}
 
 	public void clear() {
-		int i;
 		for (; 0 < al.size();) {
 			al.remove(0);
 		}

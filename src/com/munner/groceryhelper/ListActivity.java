@@ -102,6 +102,10 @@ public class ListActivity extends Activity{
 			int index = lv.getCheckedItemPosition();
 			if (index == -1) {
 				Toast.makeText(getApplicationContext(), "Nothing Selected", Toast.LENGTH_SHORT).show();
+				return true;
+			}
+			else {
+				Toast.makeText(getApplicationContext(), al.get(index) + " Removed", Toast.LENGTH_SHORT).show();				
 				al.remove(index);
 				adapter.notifyDataSetChanged();
 				lv.clearChoices();

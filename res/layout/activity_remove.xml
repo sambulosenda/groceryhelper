@@ -9,7 +9,7 @@
     tools:context="com.munner.groceryhelper.Remove" >
 
     <ListView
-        android:id="@+id/removeList"
+        android:id="@+id/removeListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

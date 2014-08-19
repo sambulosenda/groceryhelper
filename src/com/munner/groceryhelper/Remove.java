@@ -25,7 +25,7 @@ public class Remove extends Activity {
 			Toast.makeText(getApplicationContext(), "Nothing to Remove", Toast.LENGTH_SHORT).show();
 			finish();
 		}
-		lv = (ListView) findViewById(R.id.removelist);
+		lv = (ListView) findViewById(R.id.removeListView);
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, sList);
 		lv.setAdapter(adapter);
 	}

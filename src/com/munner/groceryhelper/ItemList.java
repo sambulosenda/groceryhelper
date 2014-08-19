@@ -74,5 +74,10 @@ public class ItemList implements Parcelable{
 			al.remove(0);
 		}
 	}
+
+	public int size() {
+		// TODO Auto-generated method stub
+		return al.size();
+	}
 	
 }

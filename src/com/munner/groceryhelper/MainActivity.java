@@ -25,7 +25,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 public class MainActivity extends Activity {
 
-	private static final String PREFERENCES = null;
+	private static final String PREFERENCES = "preferences";
 	ItemList il;
 	
 	@Override
@@ -127,6 +127,10 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		else if (id == R.id.mainremove) {
+			if (il.size() <= 0 ) {
+				Toast.makeText(getApplicationContext(), "Nothing to remove", Toast.LENGTH_SHORT).show();
+				return true;
+			}
 			Intent intent = new Intent(this, Remove.class);
 			intent.putExtra("il", il.getStringList());
 			startActivity(intent);

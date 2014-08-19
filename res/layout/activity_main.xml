@@ -207,4 +207,12 @@
         android:layout_toRightOf="@+id/mainText1"
         android:entries="@array/categories" />
 
+    <ListView
+        android:id="@+id/mainGList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinner1"
+        android:layout_alignTop="@+id/textView9" >
+    </ListView>
+
 </RelativeLayout>

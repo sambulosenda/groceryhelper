@@ -1,16 +1,23 @@
 package com.munner.groceryhelper;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +25,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 public class MainActivity extends Activity {
 
+	private static final String PREFERENCES = null;
 	ItemList il;
 	
 	@Override
@@ -78,6 +86,15 @@ public class MainActivity extends Activity {
 			}
 
 		});
+		ArrayList<String> al = new ArrayList<String>();
+
+		Set<String> set = new HashSet<String>();
+		SharedPreferences info = getSharedPreferences(PREFERENCES, 0);
+		al.addAll(info.getStringSet("set", set));
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, al);
+		ListView lv = (ListView) findViewById(R.id.mainGList);
+		lv.setAdapter(adapter);
 
 		
 	}

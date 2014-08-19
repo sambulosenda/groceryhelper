@@ -37,7 +37,7 @@ public class ListActivity extends Activity{
 		al.addAll(info.getStringSet("set", set));
 		
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, al);
-		lv = (ListView) findViewById(R.id.listView1);
+		lv = (ListView) findViewById(R.id.listGList);
 		lv.setAdapter(adapter);
 //		lv.setOnItemClickListener(new OnItemClickListener() {
 //			@Override

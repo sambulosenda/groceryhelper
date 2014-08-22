@@ -39,14 +39,7 @@ public class ListActivity extends Activity{
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, al);
 		lv = (ListView) findViewById(R.id.listGList);
 		lv.setAdapter(adapter);
-//		lv.setOnItemClickListener(new OnItemClickListener() {
-//			@Override
-//			public void onItemClick(AdapterView<?> a, View v, int index, long id) {
-//				al.remove(index);
-//				adapter.notifyDataSetChanged();
-//			}
-//		});
-		
+
 		EditText et = (EditText) findViewById(R.id.ListText1);
 		et.setOnEditorActionListener(new OnEditorActionListener() {
 			@Override
@@ -60,6 +53,7 @@ public class ListActivity extends Activity{
 						al.add(et.getText().toString());
 						adapter.notifyDataSetChanged();
 						et.setText(null);
+						saveinfo();
 					}
 					handled = true;
 				}
@@ -92,24 +86,24 @@ public class ListActivity extends Activity{
 		case R.id.resetList:
 			al.clear();
 			adapter.notifyDataSetChanged();
-			return true;
-
+			break;
 		case R.id.listCheck:
 			int index = lv.getCheckedItemPosition();
 			if (index == -1) {
 				Toast.makeText(getApplicationContext(), "Nothing Selected", Toast.LENGTH_SHORT).show();
-				return true;
 			}
 			else {
 				Toast.makeText(getApplicationContext(), al.get(index) + " Removed", Toast.LENGTH_SHORT).show();				
 				al.remove(index);
 				adapter.notifyDataSetChanged();
 				lv.clearChoices();
-				return true;
-			}
 
-		default: break;
+			}
+			break;
+		default: 
+			break;
 		}
+		saveinfo();
 		
 		return super.onOptionsItemSelected(item);
 	}
@@ -117,6 +111,10 @@ public class ListActivity extends Activity{
 	@Override
 	public void onStop() {
 		super.onStop();
+		saveinfo();
+	}
+
+	protected void saveinfo() {
 		Set<String> set = new HashSet<String>();
 		set.addAll(al);
 		SharedPreferences info = getSharedPreferences(PREFERENCES, 0);

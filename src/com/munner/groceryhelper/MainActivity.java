@@ -27,6 +27,8 @@ public class MainActivity extends Activity {
 
 	private static final String PREFERENCES = "preferences";
 	ItemList il;
+	ArrayAdapter<String> adapter;
+	ArrayList<String> al;
 	
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -86,13 +88,13 @@ public class MainActivity extends Activity {
 			}
 
 		});
-		ArrayList<String> al = new ArrayList<String>();
+		al = new ArrayList<String>();
 
 		Set<String> set = new HashSet<String>();
 		SharedPreferences info = getSharedPreferences(PREFERENCES, 0);
 		al.addAll(info.getStringSet("set", set));
 		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, al);
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, al);
 		ListView lv = (ListView) findViewById(R.id.mainGList);
 		lv.setAdapter(adapter);
 
@@ -144,6 +146,18 @@ public class MainActivity extends Activity {
 		super.onSaveInstanceState(bundle);
 		bundle.putParcelable("list", il);
 	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Set<String> set = new HashSet<String>();
+		SharedPreferences info = getSharedPreferences(PREFERENCES, 0);
+		al.clear();
+		al.addAll(info.getStringSet("set", set));
+		adapter.notifyDataSetChanged();
+		
+	}	
 
 	private void updateDisplay() {
 		TextView tv = (TextView) findViewById(R.id.textView10);

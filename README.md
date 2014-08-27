@@ -1,6 +1,8 @@
 Grocery Helper 
 Program licensed under the Apache License. See LICENSE for more details.
 
+This application was created in Eclipse and uses the appropriate project files.
+
 This application is designed to help you with your grocery shopping. It can keep track of your current shopping bill and you can create a grocery list. 
 
 I do have a todo list of features that would greatly enhance the functionality.
